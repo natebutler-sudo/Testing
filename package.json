@@ -1,0 +1,9 @@
+{
+  "name": "demo-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "lodash": "4.17.15",          // Prototype pollution (CVE-2019-10744)
+    "minimist": "0.0.1",          // Prototype pollution (CVE-2020-7598)
+    "express": "4.16.4"           // Multiple vulnerabilities
+  }
+}
